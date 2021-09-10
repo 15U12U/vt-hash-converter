@@ -1,4 +1,4 @@
-# VT-Hash-Finder
+# VT-Hash-Converter
 
 > This is a simple python script to lookup one type of hash in Virustotal and outputs all 3 types of hashes.
 
@@ -11,7 +11,7 @@
 ## Usage
 
 ```python
-python3 vt-hash-finder.py <api-key> hashes.txt
+python3 vt-hash-converter.py <api-key> hashes.txt
 ```
 
 <br>
