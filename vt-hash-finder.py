@@ -13,7 +13,7 @@ header = ['input_hash', 'names', 'md5', 'sha1', 'sha256']
 with open('hashes.csv', 'w', encoding='UTF8') as csv_file:
     writer = csv.writer(csv_file)
 
-    # write the header
+    # writing the header
     writer.writerow(header)
 
     csv_file.close()
@@ -24,6 +24,7 @@ api_url = "https://www.virustotal.com/api/v3/search"
 # Request Headers
 request_headers = {'x-apikey': str(sys.argv[1])}
 
+# defining a dict for the parameters to be sent to the API
 with open(sys.argv[2], "r") as file:
     hash_list=file.read().splitlines()
 
@@ -31,10 +32,10 @@ with open(sys.argv[2], "r") as file:
 
     for hash in hash_list:
 
-        # defining a dict for the parameters to be sent to the API
+        # setting the parameter
         request_params = {'query': hash}
 
-        # sending get request and saving the response as response object
+        # sending get request and saving the response as 'response' object
         response = requests.get(url = api_url, params = request_params, headers = request_headers)
 
 
@@ -53,7 +54,7 @@ with open(sys.argv[2], "r") as file:
                 with open('hashes.csv', 'a', encoding='UTF8') as csv_file:
                     writer = csv.writer(csv_file)
 
-                    # write to row
+                    # writing the output to a new row
                     writer.writerow(data)
 
                     csv_file.close()
@@ -66,7 +67,7 @@ with open(sys.argv[2], "r") as file:
                 with open('hashes.csv', 'a', encoding='UTF8') as csv_file:
                     writer = csv.writer(csv_file)
 
-                    # write to row
+                    # writing the output to a new row
                     writer.writerow(data)
 
                     csv_file.close()
