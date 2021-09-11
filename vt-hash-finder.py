@@ -7,6 +7,15 @@ import requests
 import json
 import time
 
+print('''
+██╗░░░██╗████████╗░░░░░░██╗░░██╗░█████╗░░██████╗██╗░░██╗░░░░░░░█████╗░░█████╗░███╗░░██╗██╗░░░██╗███████╗██████╗░████████╗███████╗██████╗░
+██║░░░██║╚══██╔══╝░░░░░░██║░░██║██╔══██╗██╔════╝██║░░██║░░░░░░██╔══██╗██╔══██╗████╗░██║██║░░░██║██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔══██╗
+╚██╗░██╔╝░░░██║░░░█████╗███████║███████║╚█████╗░███████║█████╗██║░░╚═╝██║░░██║██╔██╗██║╚██╗░██╔╝█████╗░░██████╔╝░░░██║░░░█████╗░░██████╔╝
+░╚████╔╝░░░░██║░░░╚════╝██╔══██║██╔══██║░╚═══██╗██╔══██║╚════╝██║░░██╗██║░░██║██║╚████║░╚████╔╝░██╔══╝░░██╔══██╗░░░██║░░░██╔══╝░░██╔══██╗
+░░╚██╔╝░░░░░██║░░░░░░░░░██║░░██║██║░░██║██████╔╝██║░░██║░░░░░░╚█████╔╝╚█████╔╝██║░╚███║░░╚██╔╝░░███████╗██║░░██║░░░██║░░░███████╗██║░░██║
+░░░╚═╝░░░░░░╚═╝░░░░░░░░░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝░░░░░░░╚════╝░░╚════╝░╚═╝░░╚══╝░░░╚═╝░░░╚══════╝╚═╝░░╚═╝░░░╚═╝░░░╚══════╝╚═╝░░╚═╝''')
+
+
 # creating a csv file to save results
 header = ['input_hash', 'names', 'md5', 'sha1', 'sha256']
 
@@ -30,6 +39,10 @@ with open(sys.argv[2], "r") as file:
 
     file.close()
 
+    print("")
+    print("Requesting Hashes from VirusTotal...")
+    print("")
+
     for hash in hash_list:
 
         # setting the parameter
@@ -43,6 +56,8 @@ with open(sys.argv[2], "r") as file:
             json_data = response.json()
         
             if json_data['data']:
+
+                print("Hash: ", hash, " --> Done")
 
                 md5 = json_data['data'][0]['attributes']['md5']
                 sha1 = json_data['data'][0]['attributes']['sha1']
@@ -62,6 +77,7 @@ with open(sys.argv[2], "r") as file:
                 time.sleep(15)
             else:
 
+                print("Hash: ", hash, " --> Not Found")
                 data = [hash, 'N/A', 'N/A', 'N/A', 'N/A']
 
                 with open('hashes.csv', 'a', encoding='UTF8') as csv_file:
@@ -73,9 +89,9 @@ with open(sys.argv[2], "r") as file:
                     csv_file.close()
                 
         elif (response.status_code == 400):
-            print("Please verify the hash in line", hash_list.index(hash)+1, "of the input file")
+            print("Hash: ", hash, " --> Verify the Hash")
         elif (response.status_code == 401):
-            print("Please insert a valid api key!")
+            print("Please insert a VALID api key...!!!")
             exit(1)
 
 exit(0)
