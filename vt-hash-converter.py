@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # created by 15U12U
 
 import csv
@@ -34,7 +34,7 @@ api_url = "https://www.virustotal.com/api/v3/search"
 request_headers = {'x-apikey': str(sys.argv[1])}
 
 # defining a dict for the parameters to be sent to the API
-with open(sys.argv[2], "r") as file:
+with open(str(sys.argv[2]), "r") as file:
     hash_list=file.read().splitlines()
 
     file.close()
