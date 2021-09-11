@@ -1,10 +1,10 @@
 # VT-Hash-Converter
 
-> This is a simple python script to lookup one type of hash in Virustotal and outputs all 3 types of hashes.
+> This is a simple python script to lookup one type of hash in Virustotal and outputs all 3 hashes supported by VirusTotal (MD5, SHA1, SHA256).
 
 <br>
 
-> This is useful when you need to convert a specific type of malware hash to MD5, SHA1 and SHA256 in scenarios where some security products (ex: AV, EDR, SIEM, FW etc.) only supports specific type of hash when feeding Malware IOCs for blacklisting.
+> This is useful when you need to find the other hash types of a particular malware hash. In scenarios where some security products (ex: AV, EDR, SIEM, FW etc.) only supports specific type of hash when feeding Malware IOCs for blacklisting/monitoring, you can feed the available hash list as a file to this script and get all 3 hashes as an output.
 
 <br>
 
