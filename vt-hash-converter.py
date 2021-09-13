@@ -88,8 +88,13 @@ with open(str(sys.argv[2]), "r") as file:
 
                     csv_file.close()
                 
+                time.sleep(15)
+
         elif (response.status_code == 400):
             print("Hash: ", hash, " --> Verify the Hash")
+
+            time.sleep(15)
+            
         elif (response.status_code == 401):
             print("Please insert a VALID api key...!!!")
             exit(1)
