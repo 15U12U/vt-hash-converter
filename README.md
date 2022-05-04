@@ -20,6 +20,6 @@ python3 vt-hash-converter.py <api-key> hashes.txt
 
 > This will output a csv file (hashes.csv) consists of all the hashes.
 
-|input_hash | names | md5 |sha1 | sh256 |
-|:----------|:------|:----|:----|:------|
-|xxx        | xxx   | xxx | xxx | xxx   |
+|input_hash | names | md5 | sha1 | sha256 |
+|:----------|:------|:----|:-----|:-------|
+|xxx        | xxx   | xxx | xxx  | xxx    |
